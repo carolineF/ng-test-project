@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoggerService } from './logger.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-test-project';
+  log: string = '';
+
+  constructor(private loggerService: LoggerService) {
+
+  }
+
+  ngOnInit() {
+    this.log = this.loggerService.getLog()
+  }
 }
