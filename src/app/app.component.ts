@@ -11,10 +11,14 @@ export class AppComponent {
   title = 'ng-test-project';
   title1 = 'I am not hello world';
   title2 = this.title1;
+  title3 = this.title1
   log: string = '';
 
   constructor(private loggerService: LoggerService, private helloWorldService: HelloWorldService) {
     this.title2 = helloWorldService.getHelloWorld();
+    this.helloWorldService.getHelloWorldFormHttp().subscribe(data => {
+      this.title3 = data;
+    })
   }
 
   ngOnInit() {
