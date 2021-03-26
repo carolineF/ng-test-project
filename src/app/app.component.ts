@@ -2,13 +2,14 @@ import { Component, Inject } from '@angular/core';
 import { LoggerService } from './logger.service';
 import { HelloWorldService } from './hello-world.service';
 import { map } from 'rxjs/operators';
-import { HELLO_WORLD_TOKEN, useValueProvider } from './assist';
+import { HELLO_WORLD_TOKEN, useFactoryProvider, useValueProvider } from './assist';
+import { HelloworldFactoryService } from './helloworld-factory.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
-  providers: [useValueProvider]
+  providers: [useValueProvider, useFactoryProvider]
 })
 export class AppComponent {
   title = 'ng-test-project';
@@ -18,11 +19,13 @@ export class AppComponent {
   title4 = this.title1
   title5:string[] = []
   title6 = this.title1
+  title7 = this.title1
   log: string = '';
 
   constructor(private loggerService: LoggerService, 
     private helloWorldService: HelloWorldService,
-    @Inject(HELLO_WORLD_TOKEN) private helloStr: string) {
+    @Inject(HELLO_WORLD_TOKEN) private helloStr: string,
+    private helloworldFactoryService: HelloworldFactoryService) {
     this.title2 = helloWorldService.getHelloWorld();
     this.helloWorldService.getHelloWorldFormHttp().subscribe(data => {
       this.title3 = data;
@@ -37,6 +40,8 @@ export class AppComponent {
       })
 
     this.title6 = helloStr;
+
+    this.title7 = this.helloworldFactoryService.getHelloworld();
   }
 
   ngOnInit() {
