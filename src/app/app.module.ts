@@ -8,6 +8,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { HeroDetailModule } from './hero-detail/hero-detail.module';
 import { HelloWorldPipe } from './hello-world.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HeroModule,
     HeroDetailModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

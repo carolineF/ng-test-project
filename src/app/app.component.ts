@@ -20,6 +20,7 @@ export class AppComponent {
   title5:string[] = []
   title6 = this.title1
   title7 = this.title1
+  title8 = ''
   log: string = '';
 
   constructor(private loggerService: LoggerService, 
